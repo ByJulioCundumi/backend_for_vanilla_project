@@ -1,6 +1,17 @@
-import {pool} from "../db.js"
+import {pool} from "../db.js";
 
-export async function getUsers(req, res){
+export const getUsers = async (req, res) => {
+    try {
+        const [rows] = await pool.query("SELECT * FROM users")
+        res.json(rows)
+    } catch (error) {
+        res.status(500).json({
+            message: "Something wrong happened :("
+        })
+    }
+}
+//
+export const getUser = async (req, res) => {
     try {
         
     } catch (error) {
@@ -8,7 +19,7 @@ export async function getUsers(req, res){
     }
 }
 //
-export async function getUser(req, res){
+export const postUser = (req, res) => {
     try {
         
     } catch (error) {
@@ -16,7 +27,7 @@ export async function getUser(req, res){
     }
 }
 //
-export async function postUser(req, res){
+export const putUser = async (req, res) => {
     try {
         
     } catch (error) {
@@ -24,15 +35,7 @@ export async function postUser(req, res){
     }
 }
 //
-export async function putUser(req, res){
-    try {
-        
-    } catch (error) {
-        
-    }
-}
-//
-export async function deleteUser(req, res){
+export const deleteUser = (req, res) => {
     try {
         
     } catch (error) {
